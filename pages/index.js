@@ -1,5 +1,5 @@
 import React from 'react'
-import { rehydrate, css } from 'glamor'
+import { rehydrate } from 'glamor'
 import glamorous from 'glamorous'
 import { withReduxSaga } from '../src/store'
 import Header from '../src/containers/Header'

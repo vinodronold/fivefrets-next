@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore } from 'redux'
 import withRedux from 'next-redux-wrapper'
-import nextReduxSaga from 'next-redux-saga'
+// import nextReduxSaga from 'next-redux-saga'
 import logger from 'redux-logger'
 import InitialState from '../reducers/InitialState'
 import rootReducer from '../reducers'
