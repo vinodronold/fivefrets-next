@@ -1,8 +1,8 @@
 import React from 'react'
 import { rehydrate } from 'glamor'
 import glamorous from 'glamorous'
-import { withReduxSaga } from '../src/store'
-import Header from '../src/containers/Header'
+import { withReduxSaga } from '../src/app/store'
+import Layout from '../src/app/Layout'
 
 // Adds server generated styles to glamor cache.
 // Has to run before any `style()` calls
@@ -11,13 +11,12 @@ if (typeof window !== 'undefined') {
   rehydrate(window.__NEXT_DATA__.ids)
 }
 const Wrapper = glamorous.div({
-  margin: '2rem',
+  margin: '10rem',
   color: 'orange'
 })
 const Home = () =>
-  <div>
-    <Header />
+  <Layout>
     <Wrapper>PAGES</Wrapper>
-  </div>
+  </Layout>
 
 export default withReduxSaga(Home)
