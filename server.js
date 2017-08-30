@@ -12,7 +12,7 @@ app.prepare().then(() => {
   server.get('/api', (req, res) => {
     res.json({ test: 'ok' })
   })
-  
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })
