@@ -1,6 +1,5 @@
 import React from 'react'
 import { rehydrate } from 'glamor'
-import glamorous from 'glamorous'
 import { withReduxSaga } from '../src/app/store'
 import Layout from '../src/app/Layout'
 
@@ -10,13 +9,7 @@ import Layout from '../src/app/Layout'
 if (typeof window !== 'undefined') {
   rehydrate(window.__NEXT_DATA__.ids)
 }
-const Wrapper = glamorous.div({
-  margin: '10rem',
-  color: 'orange'
-})
-const Home = () =>
-  <Layout>
-    <Wrapper>PAGES</Wrapper>
-  </Layout>
+
+const Home = () => <Layout />
 
 export default withReduxSaga(Home)
