@@ -2,20 +2,25 @@ import React from 'react'
 import glamorous from 'glamorous'
 
 const dim = 5
-const Container = glamorous.div({
-  width: `${dim}rem`,
-  height: `${dim}rem`,
-  bottom: '1rem',
-  right: '1rem',
-  position: 'absolute',
-  cursor: 'pointer',
-  background: 'rgba(255,255,255,0)',
-  borderRadius: '50%',
-  zIndex: 15,
-  '&:hover': {
-    background: 'rgba(255,255,255,.1)'
-  }
-})
+const Container = glamorous.div(
+  {
+    width: `${dim}rem`,
+    height: `${dim}rem`,
+    bottom: '1.1rem',
+    right: '1.1rem',
+    position: 'fixed',
+    cursor: 'pointer',
+    borderRadius: '50%',
+    zIndex: 15,
+    transition: 'all .5s'
+  },
+  ({ theme }) => ({
+    background: theme.color.secondary(),
+    '&:hover': {
+      background: theme.color.secondary(0.8)
+    }
+  })
+)
 
 const Hamburger = glamorous.div({
   position: 'absolute',
@@ -26,7 +31,6 @@ const Hamburger = glamorous.div({
 const Layer = glamorous.span(
   {
     display: 'block',
-    background: '#FFF',
     borderRadius: '2px',
     height: '4px',
     position: 'relative',
@@ -35,9 +39,10 @@ const Layer = glamorous.span(
     left: `${dim * 0.2}rem`,
     transition: '.25s ease-in-out'
   },
-  ({ level, isMenuOpen }) => ({
+  ({ level, isMenuOpen, theme }) => ({
     transitionDelay: `${(isMenuOpen ? 0 : 0.5) + 0.125 * (level - 1)}s`,
-    width: `${isMenuOpen ? 0 : dim * 0.6}rem`
+    width: `${isMenuOpen ? 0 : dim * 0.6}rem`,
+    background: theme.color.primary()
   })
 )
 
@@ -54,6 +59,9 @@ const Arm = glamorous.span(
     transition: '.25s ease-in-out',
     background: '#FFF'
   },
+  ({ theme }) => ({
+    background: theme.color.primary()
+  }),
   ({ level, isMenuOpen }) =>
     level === 1
       ? {

@@ -1,26 +1,27 @@
 import React from 'react'
 import glamorous from 'glamorous'
-import Button from './utils/Button'
-import MenuButton from './utils/MenuButton'
+import Button from './html/Button'
+import MenuButton from './MenuButton'
 const Menu = glamorous.div(
   {
     display: 'flex',
-    position: 'absolute',
+    position: 'fixed',
     top: 0,
     left: 0,
     right: 0,
+    bottom: 0,
     margin: `auto`,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    overflow: 'hidden',
     justifyContent: 'center',
     textAlign: 'center',
     flexDirection: 'column',
-    height: '100%',
     transition: 'all .5s'
   },
   ({ isMenuOpen, theme }) => ({
     opacity: isMenuOpen ? 1 : 0,
     zIndex: isMenuOpen ? 10 : 0,
-    color: theme.color.bg
+    color: theme.color.primary(),
+    backgroundColor: theme.color.bg()
   })
 )
 

@@ -13,11 +13,12 @@ const Button = glamorous.button(
     transition: 'all .5s'
   },
   ({ theme, disabled, onDark }) => ({
-    color: !disabled && (onDark ? theme.color.bg : theme.color.primary),
-    border: onDark ? 'none' : `solid .1rem ${theme.color.bg}`,
+    color: !disabled && theme.color.primary(),
+    // color: !disabled && (onDark ? theme.color.primary : theme.color.primary),
+    border: onDark ? 'none' : `solid .1rem ${theme.color.primary()}`,
     ':hover': {
-      color: !disabled && theme.color.accent,
-      border: !disabled && (onDark ? 'none' : `solid .1rem ${theme.color.compliment}`),
+      color: !disabled && theme.color.secondary(),
+      border: !disabled && (onDark ? 'none' : `solid .1rem ${theme.color.secondary()}`),
       cursor: disabled && 'not-allowed'
     }
   })
