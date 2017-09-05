@@ -1,7 +1,13 @@
-import { TOGGLE_MENU } from '../constants/ActionTypes'
+import { TOGGLE_MENU, TOGGLE_SEARCH, SEARCH_TEXT } from '../constants/ActionTypes'
 
 const ToggleMenu = {
   type: TOGGLE_MENU
 }
-
-export { ToggleMenu }
+const ToggleSearch = {
+  type: TOGGLE_SEARCH
+}
+const SearchText = text => ({
+  type: SEARCH_TEXT,
+  text
+})
+export { ToggleMenu, ToggleSearch, SearchText }

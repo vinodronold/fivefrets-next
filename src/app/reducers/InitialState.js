@@ -1,5 +1,7 @@
 export default {
-  menubar: {
-    isMenuOpen: false
+  ui: {
+    isMenuOpen: false,
+    isSearchOpen: false,
+    searchVal: ''
   }
 }

@@ -5,6 +5,7 @@ import Theme from './constants/Theme'
 import Header from './containers/Header'
 import Footer from './components/Footer'
 import Menu from './containers/Menu'
+import MenuButton from './containers/MenuButton'
 import Content from './containers/Content'
 import SearchBox from './containers/SearchBox'
 
@@ -31,6 +32,7 @@ export default ({ children }) => {
           {children}
         </Content>
         <Menu />
+        <MenuButton />
         <Footer />
       </div>
     </ThemeProvider>

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import MenuBarReducer from './MenuBarReducer'
+import UIReducer from './UIReducer'
 
 export default combineReducers({
-  menubar: MenuBarReducer
+  ui: UIReducer
 })

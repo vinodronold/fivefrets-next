@@ -1,1 +1,3 @@
 export const TOGGLE_MENU = 'TOGGLE_MENU'
+export const TOGGLE_SEARCH = 'TOGGLE_SEARCH'
+export const SEARCH_TEXT = 'SEARCH_TEXT'

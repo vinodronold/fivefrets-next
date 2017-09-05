@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import glamorous from 'glamorous'
 import YTImg from './utils/YTImg'
 import { Title, SubHeading1 } from './html/Typography'
@@ -28,14 +29,16 @@ const Content = glamorous.div({
   display: 'block'
 })
 
-export default () => (
-  <Card>
-    <Left>
-      <img src={YTImg('add')} alt={'YT'} />
-    </Left>
-    <Content>
-      <Title>Title</Title>
-      <SubHeading1>SubHeading1</SubHeading1>
-    </Content>
-  </Card>
+export default ({ id }) => (
+  <Link href={`/play?id=${id}`}>
+    <Card>
+      <Left>
+        <img src={YTImg('add')} alt={'YT'} />
+      </Left>
+      <Content>
+        <Title>Title</Title>
+        <SubHeading1>SubHeading1</SubHeading1>
+      </Content>
+    </Card>
+  </Link>
 )

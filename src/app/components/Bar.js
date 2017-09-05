@@ -29,15 +29,12 @@ const Brand = glamorous.span({
   fontFeatureSettings: `"liga" 0`
 })
 
-const ClearFix = glamorous.div({
-  height: `${height + pad}rem`
-})
+// const ClearFix = glamorous.div({
+//   height: `${height + pad}rem`
+// })
 
 export default ({ isMenuOpen, ToggleMenu }) => (
-  <div>
-    <Wrapper isMenuOpen={isMenuOpen}>
-      <Brand>fivefrets</Brand>
-    </Wrapper>
-    <ClearFix />
-  </div>
+  <Wrapper isMenuOpen={isMenuOpen}>
+    <Brand>fivefrets</Brand>
+  </Wrapper>
 )

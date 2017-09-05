@@ -3,7 +3,7 @@ import { ToggleMenu } from '../actions'
 import MenuItems from '../components/MenuItems'
 
 const mapStateToProps = state => ({
-  ...state.menubar
+  ...state.ui
 })
 const mapDispatchToProps = dispatch => ({
   ToggleMenu: () => {

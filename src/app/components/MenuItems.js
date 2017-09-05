@@ -1,7 +1,6 @@
 import React from 'react'
 import glamorous from 'glamorous'
 import Button from './html/Button'
-import MenuButton from './MenuButton'
 const Menu = glamorous.div(
   {
     display: 'flex',
@@ -32,6 +31,5 @@ export default ({ isMenuOpen, ToggleMenu }) => (
       <Button onDark>Browse</Button>
       <Button onDark>Login</Button>
     </Menu>
-    <MenuButton isMenuOpen={isMenuOpen} ToggleMenu={ToggleMenu} />
   </div>
 )

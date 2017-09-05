@@ -39,9 +39,9 @@ const Layer = glamorous.span(
     left: `${dim * 0.2}rem`,
     transition: '.25s ease-in-out'
   },
-  ({ level, isMenuOpen, theme }) => ({
-    transitionDelay: `${(isMenuOpen ? 0 : 0.5) + 0.125 * (level - 1)}s`,
-    width: `${isMenuOpen ? 0 : dim * 0.6}rem`,
+  ({ level, isOpen, theme }) => ({
+    transitionDelay: `${(isOpen ? 0 : 0.5) + 0.125 * (level - 1)}s`,
+    width: `${isOpen ? 0 : dim * 0.6}rem`,
     background: theme.color.primary()
   })
 )
@@ -62,35 +62,35 @@ const Arm = glamorous.span(
   ({ theme }) => ({
     background: theme.color.primary()
   }),
-  ({ level, isMenuOpen }) =>
+  ({ level, isOpen }) =>
     level === 1
       ? {
           top: '30%',
           left: `${dim * 0.48}rem`,
           width: '4px',
-          height: `${isMenuOpen ? 40 : 0}%`,
-          transitionDelay: `${isMenuOpen ? 0.625 : 0}s`
+          height: `${isOpen ? 40 : 0}%`,
+          transitionDelay: `${isOpen ? 0.625 : 0}s`
         }
       : {
           top: `${dim * 0.48}rem`,
           left: '30%',
           height: '4px',
-          width: `${isMenuOpen ? 40 : 0}%`,
-          transitionDelay: `${isMenuOpen ? 0.375 : 0.25}s`
+          width: `${isOpen ? 40 : 0}%`,
+          transitionDelay: `${isOpen ? 0.375 : 0.25}s`
         }
 )
 
-export default ({ isMenuOpen, ToggleMenu }) => (
-  <Container onClick={ToggleMenu}>
+export default ({ isMenuOpen, isSearchOpen, ToggleMenu, ToggleSearch }) => (
+  <Container onClick={isSearchOpen ? ToggleSearch : ToggleMenu}>
     <Hamburger>
       {Array(3)
         .fill(1)
-        .map((_, i) => <Layer key={i} level={i} isMenuOpen={isMenuOpen} />)}
+        .map((_, i) => <Layer key={i} level={i} isOpen={isMenuOpen || isSearchOpen} />)}
     </Hamburger>
     <Cross>
       {Array(2)
         .fill(1)
-        .map((_, i) => <Arm key={i} level={i} isMenuOpen={isMenuOpen} />)}
+        .map((_, i) => <Arm key={i} level={i} isOpen={isMenuOpen || isSearchOpen} />)}
     </Cross>
   </Container>
 )

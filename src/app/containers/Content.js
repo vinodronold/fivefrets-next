@@ -8,6 +8,6 @@ const Content = glamorous.div({ position: 'relative' }, ({ isMenuOpen, theme }) 
 }))
 
 const mapStateToProps = state => ({
-  ...state.menubar
+  ...state.ui
 })
 export default connect(mapStateToProps)(Content)
