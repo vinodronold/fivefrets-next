@@ -3,14 +3,21 @@
   "version": "1.0.0",
   "description": "Webapp for fivefrets.com",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "nodemon server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src/api/*",
+      "src/app/sagas/*"
+    ]
   },
   "repository": "https://github.com/vinodronold/fivefrets-next.git",
   "author": "Vinod Ronold <vinodronoldbe@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.16.2",
     "express": "^4.15.4",
     "glamor": "^2.20.40",
     "glamorous": "^4.6.0",
@@ -35,6 +42,7 @@
     "eslint-plugin-import": "2.6.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.1.0",
+    "nodemon": "^1.12.0",
     "redux-logger": "^3.0.6"
   }
 }

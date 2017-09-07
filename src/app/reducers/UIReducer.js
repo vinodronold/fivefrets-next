@@ -1,4 +1,4 @@
-import { TOGGLE_MENU, TOGGLE_SEARCH, SEARCH_TEXT } from '../constants/ActionTypes'
+import { TOGGLE_MENU, TOGGLE_SEARCH } from '../constants/ActionTypes'
 import InitialState from './InitialState'
 
 export default (state = InitialState.ui, action) => {
@@ -6,9 +6,7 @@ export default (state = InitialState.ui, action) => {
     case TOGGLE_MENU:
       return Object.assign({}, state, { isMenuOpen: !state.isMenuOpen })
     case TOGGLE_SEARCH:
-      return Object.assign({}, state, { isSearchOpen: !state.isSearchOpen, searchVal: '' })
-    case SEARCH_TEXT:
-      return Object.assign({}, state, { searchVal: action.text })
+      return Object.assign({}, state, { isSearchOpen: !state.isSearchOpen })
     default:
       return state
   }

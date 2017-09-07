@@ -1,5 +1,6 @@
 const express = require('express')
 const next = require('next')
+const api = require('./src/api')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -8,11 +9,7 @@ const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
   const server = express()
-
-  server.get('/api', (req, res) => {
-    res.json({ test: 'ok' })
-  })
-
+  server.use('/api', api)
   server.get('*', (req, res) => {
     return handle(req, res)
   })

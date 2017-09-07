@@ -1,5 +1,8 @@
 import React from 'react'
+import Router from 'next/router'
 import glamorous from 'glamorous'
+import Loader from './Loader'
+import { Caption } from './html/Typography'
 
 const Container = glamorous.div(
   {
@@ -34,38 +37,57 @@ const Search = glamorous.input(
     color: theme.color.primary()
   })
 )
+const Results = glamorous.div({
+  padding: '2rem',
+  display: 'block'
+})
+const Item = glamorous.div({
+  padding: '1rem',
+  textAlign: 'center',
+  cursor: 'pointer'
+})
 
-// export default class SearchComponent extends Component {
-//   constructor(props) {
-//     super(props)
-//     this.value = null
-//   }
+const DisplayResult = ({ result, ToggleSearch }) =>
+  result.length > 0 ? (
+    <Results>
+      {result.map((s, i) => (
+        <Item
+          key={s.id.videoId}
+          onClick={() => {
+            Router.push({
+              pathname: '/play',
+              query: { id: s.id.videoId }
+            })
+            Router.onRouteChangeComplete = () => {
+              ToggleSearch()
+            }
+          }}>
+          {s.snippet.title}
+        </Item>
+      ))}
+    </Results>
+  ) : (
+    <Loader />
+  )
 
-//   render = () => {
-//     const { isSearchOpen, ToggleSearch } = this.props
-//     return (
-//       <Container isSearchOpen={isSearchOpen}>
-//         <Search
-//           type="text"
-//           value={this.value}
-//           placeholder="Search"
-//           isSearchOpen={isSearchOpen}
-//           onFocus={ToggleSearch}
-//         />
-//       </Container>
-//     )
-//   }
-// }
-
-export default ({ isSearchOpen, searchVal, ToggleSearch, SearchText }) => (
+export default ({ isSearchOpen, isError, searchVal, result, ToggleSearch, SearchText }) => (
   <Container isSearchOpen={isSearchOpen}>
     <Search
       type="text"
       value={searchVal}
       placeholder="Search"
       isSearchOpen={isSearchOpen}
-      onFocus={ToggleSearch}
-      onChange={e => SearchText(e.target.value)}
+      onChange={e => {
+        !isSearchOpen && ToggleSearch()
+        SearchText(e.target.value)
+      }}
     />
+    {isSearchOpen &&
+      searchVal.length > 0 &&
+      (isError ? (
+        <Caption>Oops.. Error.. Search did not complete.. Sorry.. </Caption>
+      ) : (
+        <DisplayResult result={result} ToggleSearch={ToggleSearch} />
+      ))}
   </Container>
 )
