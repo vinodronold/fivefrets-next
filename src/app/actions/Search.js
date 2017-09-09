@@ -2,7 +2,8 @@ import {
   SEARCH_TEXT,
   FETCH_SEARCH_TEXT,
   FETCH_SEARCH_TEXT_ERROR,
-  FETCH_SEARCH_TEXT_SUCCESS
+  FETCH_SEARCH_TEXT_SUCCESS,
+  SEARCH_RESULT_CLICK
 } from '../constants/ActionTypes'
 
 const SearchText = text => ({
@@ -19,4 +20,8 @@ const FetchSearchTextSuccess = result => ({
   type: FETCH_SEARCH_TEXT_SUCCESS,
   result
 })
-export { SearchText, FetchSearchText, FetchSearchTextError, FetchSearchTextSuccess }
+const SearchResultClick = song => ({
+  type: SEARCH_RESULT_CLICK,
+  song
+})
+export { SearchText, FetchSearchText, FetchSearchTextError, FetchSearchTextSuccess, SearchResultClick }

@@ -1,1 +1,0 @@
-export default (axios, url, params) => axios.get(url, params)

@@ -28,7 +28,7 @@ const Loader = glamorous.div(
   })
 )
 export default () => (
-  <div>
+  <div style={{ textAlign: 'center' }}>
     <LoaderContainer>
       {Array(bars)
         .fill(1)

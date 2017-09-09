@@ -6,7 +6,7 @@ var YoutubeDataAPI = axios.create({
     maxResults: '5',
     type: 'video',
     videoCategoryId: '10',
-    fields: 'items(id,snippet/title,snippet/thumbnails/default/url)',
+    fields: 'items(id,snippet/title)',
     key: 'AIzaSyDt03O45GRK2doERZICfzCgUbeXVFtLpiY'
   }
 })

@@ -13,6 +13,4 @@ export const ConfigureStore = (InitState = InitialState) => {
   store.sagaTask = sagaMiddleware.run(rootSaga)
   return store
 }
-
 export const withReduxSaga = BaseComponent => withRedux(ConfigureStore)(nextReduxSaga(BaseComponent))
-// export const withReduxSaga = BaseComponent => withRedux(ConfigureStore)(BaseComponent)

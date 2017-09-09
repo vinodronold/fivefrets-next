@@ -2,12 +2,12 @@ import React from 'react'
 import Router from 'next/router'
 import glamorous from 'glamorous'
 import Loader from './Loader'
+import Card from './Card'
 import { Caption } from './html/Typography'
 
 const Container = glamorous.div(
   {
-    padding: '4rem 1rem',
-    textAlign: 'center'
+    padding: '2rem'
   },
   ({ isSearchOpen, theme }) =>
     isSearchOpen && {
@@ -23,55 +23,52 @@ const Container = glamorous.div(
 )
 const Search = glamorous.input(
   {
-    width: '80%',
     backgroundColor: 'rgba(0,0,0,0)',
     borderStyle: 'none',
-    fontSize: '2rem',
+    width: '80%',
     borderBottom: '2px solid #FFF',
-    textAlign: 'center',
     '&:focus': {
       outline: 'none'
     }
   },
-  ({ theme }) => ({
-    color: theme.color.primary()
+  ({ theme, isSearchOpen }) => ({
+    color: theme.color.primary(),
+    textAlign: isSearchOpen ? 'left' : 'center',
+    fontSize: isSearchOpen ? '4rem' : '2rem'
   })
 )
 const Results = glamorous.div({
-  padding: '2rem',
+  padding: '1rem',
   display: 'block'
 })
-const Item = glamorous.div({
-  padding: '1rem',
-  textAlign: 'center',
-  cursor: 'pointer'
-})
 
-const DisplayResult = ({ result, ToggleSearch }) =>
+const DisplayResult = ({ result, ToggleSearch, SearchResultClick }) =>
   result.length > 0 ? (
     <Results>
-      {result.map((s, i) => (
-        <Item
-          key={s.id.videoId}
+      {result.map(s => (
+        <Card
+          key={s.id}
+          id={s.id}
+          title={s.title}
+          height="45rem"
           onClick={() => {
-            Router.push({
-              pathname: '/play',
-              query: { id: s.id.videoId }
-            })
+            Router.push(`/play?id=${s.id}`, `/play/${s.id}`)
             Router.onRouteChangeComplete = () => {
               ToggleSearch()
+              SearchResultClick(s)
+              Router.onRouteChangeComplete = null
             }
-          }}>
-          {s.snippet.title}
-        </Item>
+          }}
+        />
       ))}
     </Results>
   ) : (
     <Loader />
   )
 
-export default ({ isSearchOpen, isError, searchVal, result, ToggleSearch, SearchText }) => (
+export default ({ isSearchOpen, isError, searchVal, result, ToggleSearch, SearchText, SearchResultClick }) => (
   <Container isSearchOpen={isSearchOpen}>
+  <div style={{textAlign: 'center'}}>
     <Search
       type="text"
       value={searchVal}
@@ -81,13 +78,13 @@ export default ({ isSearchOpen, isError, searchVal, result, ToggleSearch, Search
         !isSearchOpen && ToggleSearch()
         SearchText(e.target.value)
       }}
-    />
+    /></div>
     {isSearchOpen &&
       searchVal.length > 0 &&
       (isError ? (
         <Caption>Oops.. Error.. Search did not complete.. Sorry.. </Caption>
       ) : (
-        <DisplayResult result={result} ToggleSearch={ToggleSearch} />
+        <DisplayResult result={result} ToggleSearch={ToggleSearch} SearchResultClick={SearchResultClick} />
       ))}
   </Container>
 )

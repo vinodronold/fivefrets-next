@@ -2,11 +2,7 @@ import { takeLatest, put, call } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import { SEARCH_TEXT } from '../constants/ActionTypes'
 import { FetchSearchText, FetchSearchTextSuccess, FetchSearchTextError } from '../actions'
-import axios from 'axios'
-
-const getSearchResults = async text => {
-  return await axios.get(`api/search/${text}`)
-}
+import { getSearchResults } from './requests'
 
 const OpenSearch = function*({ text }) {
   yield call(delay, 500)
