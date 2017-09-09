@@ -2,6 +2,7 @@ import React from 'react'
 import { rehydrate } from 'glamor'
 import { withReduxSaga } from '../src/app/store'
 import Layout from '../src/app/Layout'
+import Player from '../src/app/containers/Player'
 
 // Adds server generated styles to glamor cache.
 // Has to run before any `style()` calls
@@ -12,7 +13,7 @@ if (typeof window !== 'undefined') {
 
 const Play = ({ url }) => (
   <Layout>
-    <p>PLAY {url.query.id}</p>
+    <Player id={url.query.id} />
   </Layout>
 )
 

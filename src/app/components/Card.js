@@ -1,6 +1,6 @@
 import React from 'react'
 import glamorous from 'glamorous'
-import YTImg from './utils/YTImg'
+import { YTImg } from './utils'
 import { Title, SubHeading1 } from './html/Typography'
 const Card = glamorous.div(
   {
