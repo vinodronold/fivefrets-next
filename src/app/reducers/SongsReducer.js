@@ -3,14 +3,14 @@ import {
   FETCH_SONGS,
   FETCH_SONGS_ERROR,
   FETCH_SONGS_SUCCESS,
-  SEARCH_RESULT_CLICK
+  GET_CURRENT_SONG,
+  FETCH_CURRENT_SONG_CHORDS_SUCCESS
 } from '../constants/ActionTypes'
 import InitialState from './InitialState'
 
 export default (state = InitialState.songs, action) => {
   switch (action.type) {
-    case SEARCH_RESULT_CLICK:
-      console.log(action)
+    case GET_CURRENT_SONG:
       if (state.data[action.song.id]) {
         return state
       }
@@ -24,6 +24,9 @@ export default (state = InitialState.songs, action) => {
       return Object.assign({}, state, { isFetching: false, isError: true })
     case FETCH_SONGS_SUCCESS:
       return Object.assign({}, state, { isFetching: false, isError: false, data: action.data })
+    case FETCH_CURRENT_SONG_CHORDS_SUCCESS:
+      let song = Object.assign({}, state.data[action.id], { ...action.chords })
+      return Object.assign({}, state, { data: { ...state.data, [action.id]: { ...song } } })
     default:
       return state
   }

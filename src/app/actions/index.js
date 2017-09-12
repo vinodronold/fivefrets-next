@@ -1,13 +1,21 @@
 import { TOGGLE_MENU, TOGGLE_SEARCH } from '../constants/ActionTypes'
-import { SearchText, FetchSearchText, FetchSearchTextError, FetchSearchTextSuccess, SearchResultClick } from './Search'
+import { SearchText, FetchSearchText, FetchSearchTextError, FetchSearchTextSuccess } from './Search'
 import { Songs, FetchSongs, FetchSongsError, FetchSongsSuccess } from './Songs'
+import {
+  SetTranspose,
+  GetCurrentSong,
+  FetchCurrentSongChords,
+  FetchCurrentSongChordsError,
+  FetchCurrentSongChordsSuccess
+} from './Player'
 
 const ToggleMenu = {
   type: TOGGLE_MENU
 }
-const ToggleSearch = {
-  type: TOGGLE_SEARCH
-}
+const ToggleSearch = selected => ({
+  type: TOGGLE_SEARCH,
+  selected
+})
 
 export {
   ToggleMenu,
@@ -16,9 +24,13 @@ export {
   FetchSearchText,
   FetchSearchTextError,
   FetchSearchTextSuccess,
-  SearchResultClick,
   Songs,
   FetchSongs,
   FetchSongsError,
-  FetchSongsSuccess
+  FetchSongsSuccess,
+  SetTranspose,
+  GetCurrentSong,
+  FetchCurrentSongChords,
+  FetchCurrentSongChordsError,
+  FetchCurrentSongChordsSuccess
 }

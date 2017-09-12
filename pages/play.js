@@ -13,7 +13,7 @@ if (typeof window !== 'undefined') {
 
 const Play = ({ url }) => (
   <Layout>
-    <Player id={url.query.id} />
+    <Player id={url.query.id} title={url.query.title} />
   </Layout>
 )
 

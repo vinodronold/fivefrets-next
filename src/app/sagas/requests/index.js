@@ -5,4 +5,7 @@ const SendAxiosRequest = axios.create({
 export const getSearchResults = async text => {
   return await SendAxiosRequest.get(`api/search/${text}`)
 }
+export const getChords = async id => {
+  return await SendAxiosRequest.get(`api/songs/chords/${id}`)
+}
 export default SendAxiosRequest

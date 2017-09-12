@@ -14,7 +14,6 @@ const Wrapper = glamorous.div(
     padding: `${pad / 2}rem`,
     justifyContent: 'center',
     height: `${height}rem`,
-    zIndex: 15,
     transition: 'all .5s'
   },
   ({ isMenuOpen, theme }) => ({

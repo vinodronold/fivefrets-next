@@ -1,10 +1,18 @@
 import { connect } from 'react-redux'
-import Chords from '../components/Chords'
+import { GetCurrentSong, SetTranspose } from '../actions'
+import { SelectedSong } from '../selectors'
+import PlayerLayout from '../components/PlayerLayout'
 
 const mapStateToProps = state => ({
-  songs: state.songs
+  player: state.player,
+  song: SelectedSong(state)
 })
 const mapDispatchToProps = dispatch => ({
-  Songs: () => {}
+  GetCurrentSong: song => {
+    dispatch(GetCurrentSong(song))
+  },
+  SetTranspose: n => {
+    dispatch(SetTranspose(n))
+  }
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Chords)
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerLayout)

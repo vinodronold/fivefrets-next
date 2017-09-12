@@ -1,19 +1,19 @@
 import { connect } from 'react-redux'
-import { ToggleSearch, SearchText, SearchResultClick } from '../actions'
+import { ToggleSearch, SearchText, GetCurrentSong } from '../actions'
 import Search from '../components/Search'
 const mapStateToProps = state => ({
   ...state.ui,
   ...state.search
 })
 const mapDispatchToProps = dispatch => ({
-  ToggleSearch: () => {
-    dispatch(ToggleSearch)
+  ToggleSearch: (selected = null) => {
+    dispatch(ToggleSearch(selected))
   },
   SearchText: text => {
     dispatch(SearchText(text))
   },
-  SearchResultClick: song => {
-    dispatch(SearchResultClick(song))
+  GetCurrentSong: song => {
+    dispatch(GetCurrentSong(song))
   }
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Search)

@@ -10,7 +10,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(ToggleMenu)
   },
   ToggleSearch: () => {
-    dispatch(ToggleSearch)
+    dispatch(ToggleSearch())
   }
 })
 

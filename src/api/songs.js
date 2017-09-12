@@ -22,11 +22,10 @@ router.route('/latest').get((req, res) => {
     }
   })
 })
-router.route('/:id').get((req, res) => {
+router.route('/chords/:id').get((req, res) => {
   res.json({
     [req.params.id]: {
-      title: `Title ${req.params.id}`,
-      subtitle: `Sub Title ${req.params.id}`,
+      title: req.params.id,
       diagram: [
         { r: 1, q: 1 },
         { r: 1, q: 2 },

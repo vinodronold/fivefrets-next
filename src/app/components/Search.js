@@ -18,7 +18,7 @@ const Container = glamorous.div(
       left: 0,
       right: 0,
       zIndex: 12,
-      margin: 0
+      marginTop: '3rem'
     }
 )
 const Search = glamorous.input(
@@ -42,20 +42,19 @@ const Results = glamorous.div({
   display: 'block'
 })
 
-const DisplayResult = ({ result, ToggleSearch, SearchResultClick }) =>
+const DisplayResult = ({ result, ToggleSearch }) =>
   result.length > 0 ? (
     <Results>
-      {result.map(s => (
+      {result.map((s, idx) => (
         <Card
           key={s.id}
           id={s.id}
           title={s.title}
           height="45rem"
           onClick={() => {
-            Router.push(`/play?id=${s.id}`, `/play/${s.id}`)
+            Router.push(`/play?id=${s.id}&title=${s.title}`, `/play/${s.id}`)
             Router.onRouteChangeComplete = () => {
-              ToggleSearch()
-              SearchResultClick(s)
+              ToggleSearch(idx)
               Router.onRouteChangeComplete = null
             }
           }}
@@ -66,25 +65,26 @@ const DisplayResult = ({ result, ToggleSearch, SearchResultClick }) =>
     <Loader />
   )
 
-export default ({ isSearchOpen, isError, searchVal, result, ToggleSearch, SearchText, SearchResultClick }) => (
+export default ({ isSearchOpen, isError, searchVal, result, ToggleSearch, SearchText }) => (
   <Container isSearchOpen={isSearchOpen}>
-  <div style={{textAlign: 'center'}}>
-    <Search
-      type="text"
-      value={searchVal}
-      placeholder="Search"
-      isSearchOpen={isSearchOpen}
-      onChange={e => {
-        !isSearchOpen && ToggleSearch()
-        SearchText(e.target.value)
-      }}
-    /></div>
+    <div style={{ textAlign: 'center' }}>
+      <Search
+        type="text"
+        value={searchVal}
+        placeholder="Search"
+        isSearchOpen={isSearchOpen}
+        onChange={e => {
+          !isSearchOpen && ToggleSearch()
+          SearchText(e.target.value)
+        }}
+      />
+    </div>
     {isSearchOpen &&
       searchVal.length > 0 &&
       (isError ? (
         <Caption>Oops.. Error.. Search did not complete.. Sorry.. </Caption>
       ) : (
-        <DisplayResult result={result} ToggleSearch={ToggleSearch} SearchResultClick={SearchResultClick} />
+        <DisplayResult result={result} ToggleSearch={ToggleSearch} />
       ))}
   </Container>
 )

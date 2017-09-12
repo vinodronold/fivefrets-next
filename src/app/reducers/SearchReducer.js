@@ -10,7 +10,7 @@ import InitialState from './InitialState'
 export default (state = InitialState.search, action) => {
   switch (action.type) {
     case TOGGLE_SEARCH:
-      return Object.assign({}, state, { searchVal: '', result: [] })
+      return Object.assign({}, state, { searchVal: '', selected: action.selected })
     case SEARCH_TEXT:
       return Object.assign({}, state, { searchVal: action.text })
     case FETCH_SEARCH_TEXT:
