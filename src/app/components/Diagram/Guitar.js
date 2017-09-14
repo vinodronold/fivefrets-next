@@ -10,16 +10,8 @@ const Container = glamorous.div({
   margin: '1rem'
 })
 
-const SVGText = ({ x, y, fontSize = 12, stroke, children }) => (
-  <text
-    x={x}
-    y={y}
-    style={{
-      strokeWidth: 0.5,
-      fill: stroke,
-      fontFamily: Theme.fontFamily,
-      fontSize: `1.2rem`
-    }}>
+const SVGText = ({ x, y, fontSize = 12, fill = Theme.color.primary(), children }) => (
+  <text x={x} y={y} stroke={'none'} fill={fill} fontSize={`${fontSize}px`}>
     {children}
   </text>
 )
@@ -27,7 +19,7 @@ const SVGText = ({ x, y, fontSize = 12, stroke, children }) => (
 const Barre = ({ stroke, fret = 1 }) =>
   fret > 0 ? <ellipse cx="100" cy={50 * fret} fill={stroke} strokeWidth="1.5" ry="3" rx="80" /> : null
 
-const FretBoard = ({ children, fill, stroke, height = '10rem', r, q, x, style, ...rest }) => {
+const FretBoard = ({ children, fill, stroke, height = '15rem', r, q, x, style, ...rest }) => {
   let ChordShape = GetGuitarChordShape(r, q, x)
   let start = ChordShape.s ? ChordShape.s : 1
   return (
