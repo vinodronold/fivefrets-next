@@ -3,6 +3,7 @@ import { rehydrate } from 'glamor'
 import { withReduxSaga } from '../src/app/store'
 import Layout from '../src/app/Layout'
 import Player from '../src/app/containers/Player'
+import YouTube from '../src/app/containers/YouTube'
 
 // Adds server generated styles to glamor cache.
 // Has to run before any `style()` calls
@@ -14,6 +15,7 @@ if (typeof window !== 'undefined') {
 const Play = ({ url }) => (
   <Layout>
     <Player id={url.query.id} title={url.query.title} />
+    <YouTube />
   </Layout>
 )
 

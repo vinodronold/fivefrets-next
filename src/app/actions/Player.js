@@ -3,7 +3,8 @@ import {
   GET_CURRENT_SONG,
   FETCH_CURRENT_SONG_CHORDS,
   FETCH_CURRENT_SONG_CHORDS_ERROR,
-  FETCH_CURRENT_SONG_CHORDS_SUCCESS
+  FETCH_CURRENT_SONG_CHORDS_SUCCESS,
+  MOVE_CHORD_TO
 } from '../constants/ActionTypes'
 
 export const SetTranspose = n => ({
@@ -24,4 +25,8 @@ export const FetchCurrentSongChordsSuccess = (id, chords) => ({
   type: FETCH_CURRENT_SONG_CHORDS_SUCCESS,
   id,
   chords
+})
+export const MoveChordTo = id => ({
+  type: MOVE_CHORD_TO,
+  id
 })

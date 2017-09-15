@@ -14,10 +14,10 @@ export default {
   player: {
     isFetching: false,
     isError: false,
+    playerID: '',
     activeID: '',
     activechord: 1,
-    status: '',
-    currTime: '',
+    status: -1,
     transpose: 0
   },
   songs: {

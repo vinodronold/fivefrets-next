@@ -1,7 +1,7 @@
 import React from 'react'
 import glamorous from 'glamorous'
 import Button from '../html/Button'
-import { PLAYER_STATUS } from '../../constants/PlayerStatus'
+import PLAYER_STATUS from '../../constants/PlayerStatus'
 import { IsPlaying } from '../utils'
 
 const ControlContainer = glamorous.div({
@@ -12,7 +12,7 @@ const ControlContainer = glamorous.div({
   alignItems: 'center'
 })
 
-const PlayerControl = ({ status, PlayerStatusChanged, transpose, SetTranspose }) => (
+const PlayerControl = ({ status, transpose, SetTranspose, PlayerStatusChanged }) => (
   <div>
     <ControlContainer>
       <Button

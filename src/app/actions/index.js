@@ -6,8 +6,10 @@ import {
   GetCurrentSong,
   FetchCurrentSongChords,
   FetchCurrentSongChordsError,
-  FetchCurrentSongChordsSuccess
+  FetchCurrentSongChordsSuccess,
+  MoveChordTo
 } from './Player'
+import { MountYTPlayer, UnMountYTPlayer, PlayerStatusChanged } from './YouTube'
 
 const ToggleMenu = {
   type: TOGGLE_MENU
@@ -32,5 +34,9 @@ export {
   GetCurrentSong,
   FetchCurrentSongChords,
   FetchCurrentSongChordsError,
-  FetchCurrentSongChordsSuccess
+  FetchCurrentSongChordsSuccess,
+  MoveChordTo,
+  MountYTPlayer,
+  UnMountYTPlayer,
+  PlayerStatusChanged
 }
