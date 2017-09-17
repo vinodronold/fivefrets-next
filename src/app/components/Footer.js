@@ -1,5 +1,6 @@
 import React from 'react'
 import glamorous from 'glamorous'
+import Link from 'next/link'
 import { Caption } from './html/Typography'
 const Wrapper = glamorous.div(
   {
@@ -9,10 +10,23 @@ const Wrapper = glamorous.div(
     left: 0,
     right: 0,
     textAlign: 'center',
-    padding: '1rem'
+    padding: '1rem',
+    marginTop: '3rem'
   },
   ({ theme }) => ({
-    color: theme.color.primary()
+    color: theme.color.primary(),
+    backgroundColor: theme.color.bg()
+  })
+)
+const FooterLink = glamorous(Caption)(
+  {
+    cursor: 'pointer',
+    padding: '.25rem'
+  },
+  ({ theme }) => ({
+    '&:hover': {
+      color: theme.color.secondary(1)
+    }
   })
 )
 
@@ -31,19 +45,26 @@ const FB = Social('#3b5998')
 
 export default () => (
   <Wrapper>
-    <Caption>about fivefrets | discliamer</Caption>
-    <Caption style={{ padding: '1rem' }}>
-      Developed & Maintained by
+    <Link href="/about">
+      <FooterLink>about fivefrets</FooterLink>
+    </Link>
+    <Link href="/disclaimer">
+      <FooterLink>disclaimer</FooterLink>
+    </Link>
+    <FooterLink>
       <Twitter href="https://twitter.com/vinodronold" rel="noopener noreferrer" target="_blank">
         @vinodronold
       </Twitter>
-      | follow us
+    </FooterLink>
+    <FooterLink>
       <Twitter href="https://twitter.com/_fivefrets" rel="noopener noreferrer" target="_blank">
         @_fivefrets
       </Twitter>
+    </FooterLink>
+    <FooterLink>
       <FB href="https://twitter.com/_fivefrets" rel="noopener noreferrer" target="_blank">
         @_fivefrets
       </FB>
-    </Caption>
+    </FooterLink>
   </Wrapper>
 )

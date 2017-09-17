@@ -20,6 +20,12 @@ export default {
     status: -1,
     transpose: 0
   },
+  browse: {
+    isFetching: false,
+    isError: false,
+    pages: 0,
+    list: {}
+  },
   songs: {
     isFetching: false,
     isError: false,

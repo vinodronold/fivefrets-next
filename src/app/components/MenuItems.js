@@ -1,6 +1,7 @@
 import React from 'react'
 import glamorous from 'glamorous'
 import Button from './html/Button'
+import Router from 'next/router'
 const Menu = glamorous.div(
   {
     display: 'flex',
@@ -24,12 +25,35 @@ const Menu = glamorous.div(
   })
 )
 
+const onMenuClickHandler = (Router, ToggleMenu, href) => {
+  Router.push(href)
+  Router.onRouteChangeComplete = () => {
+    ToggleMenu()
+    Router.onRouteChangeComplete = null
+  }
+}
+
 export default ({ isMenuOpen, ToggleMenu }) => (
   <div>
     <Menu isMenuOpen={isMenuOpen}>
-      <Button onDark>Home</Button>
-      <Button onDark>Browse</Button>
-      <Button onDark>Login</Button>
+      <Button
+        onClick={() => {
+          onMenuClickHandler(Router, ToggleMenu, '/')
+        }}>
+        Home
+      </Button>
+      <Button
+        onClick={() => {
+          onMenuClickHandler(Router, ToggleMenu, '/browse')
+        }}>
+        Browse
+      </Button>
+      <Button
+        onClick={() => {
+          onMenuClickHandler(Router, ToggleMenu, '/login')
+        }}>
+        Login
+      </Button>
     </Menu>
   </div>
 )

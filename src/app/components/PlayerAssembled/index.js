@@ -1,14 +1,10 @@
 import React from 'react'
-import glamorous from 'glamorous'
+import WrapperDiv from '../utils/WrapperDiv'
 import Loader from '../Loader'
 import Controls from './Controls'
 import DisplayChords from './DisplayChords'
 import GuitarChordsDiagrams from '../Diagram/Guitar'
 import { Headline } from '../html/Typography'
-
-const Container = glamorous.div({ width: '90%', margin: '1rem auto', padding: '1rem' }, ({ theme }) => ({
-  backgroundColor: theme.color.bg(.95)
-}))
 
 const getChordsToDraw = chords =>
   chords
@@ -20,7 +16,7 @@ const getChordsToDraw = chords =>
 
 export default ({ song, player, SetTranspose, PlayerStatusChanged, MoveChordTo }) =>
   song ? (
-    <Container>
+    <WrapperDiv>
       <Headline style={{ textAlign: 'center' }}>{song.title}</Headline>
       <Controls
         status={player.status}
@@ -30,7 +26,7 @@ export default ({ song, player, SetTranspose, PlayerStatusChanged, MoveChordTo }
       />
       <DisplayChords player={player} chords={song.chords} />
       <GuitarChordsDiagrams chordsToDraw={getChordsToDraw(song.chords)} x={player.transpose} />
-    </Container>
+    </WrapperDiv>
   ) : (
     <Loader />
   )

@@ -2,6 +2,11 @@ var router = require('express').Router()
 router.route('/').get((req, res) => {
   res.json({})
 })
+router.route('/browse').get((req, res) => {
+  res.json({
+    1: ['IarsrX60bZw', 'b876JFQ2dp4', 'AxoZv5KTsSA', 'k6co-F5XjKw']
+  })
+})
 router.route('/latest').get((req, res) => {
   res.json({
     IarsrX60bZw: {

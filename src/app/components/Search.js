@@ -7,10 +7,11 @@ import { Caption } from './html/Typography'
 
 const Container = glamorous.div(
   {
-    padding: '2rem'
+    padding: '4rem'
   },
   ({ isSearchOpen, theme }) =>
     isSearchOpen && {
+      padding: '2rem',
       position: 'fixed',
       backgroundColor: theme.color.bg(1),
       top: 0,
