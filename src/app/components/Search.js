@@ -2,6 +2,7 @@ import React from 'react'
 import Router from 'next/router'
 import glamorous from 'glamorous'
 import Loader from './Loader'
+import ToggleSwitch from './html/ToggleSwitch'
 import Card from './Card'
 import { Caption } from './html/Typography'
 
@@ -66,7 +67,7 @@ const DisplayResult = ({ result, ToggleSearch }) =>
     <Loader />
   )
 
-export default ({ isSearchOpen, isError, searchVal, result, ToggleSearch, SearchText }) => (
+export default ({ isSearchOpen, isError, enableYT, searchVal, result, ToggleSearch, ToggleYTSearch, SearchText }) => (
   <Container isSearchOpen={isSearchOpen}>
     <div style={{ textAlign: 'center' }}>
       <Search
@@ -80,10 +81,17 @@ export default ({ isSearchOpen, isError, searchVal, result, ToggleSearch, Search
         }}
       />
     </div>
+    <div style={{ textAlign: 'center' }}>
+      <ToggleSwitch
+        label={`${enableYT ? 'Disable' : 'Enable'} Youtube Search`}
+        checked={enableYT}
+        ToggleYTSearch={ToggleYTSearch}
+      />
+    </div>
     {isSearchOpen &&
       searchVal.length > 0 &&
       (isError ? (
-        <Caption>Oops.. Error.. Search did not complete.. Sorry.. </Caption>
+        <Caption style={{ textAlign: 'center' }}>Oops.. Error.. Search did not complete.. Sorry.. </Caption>
       ) : (
         <DisplayResult result={result} ToggleSearch={ToggleSearch} />
       ))}

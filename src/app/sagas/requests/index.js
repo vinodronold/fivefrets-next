@@ -8,4 +8,8 @@ export const getSearchResults = async text => {
 export const getChords = async id => {
   return await SendAxiosRequest.get(`songs/chords/${id}`)
 }
+export const getBrowseListByPage = async page => {
+  let res = await SendAxiosRequest.get(`songs/browse/`)
+  return await res.data
+}
 export default SendAxiosRequest

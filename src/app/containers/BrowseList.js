@@ -1,13 +1,16 @@
 import { connect } from 'react-redux'
-import { Songs } from '../actions'
+import { Browse, GotoPage } from '../actions'
 import BrowseSongs from '../components/BrowseSongs'
 const mapStateToProps = state => ({
   ...state.browse,
   songs: state.songs.data
 })
 const mapDispatchToProps = dispatch => ({
-  Songs: () => {
-    dispatch(Songs())
+  Browse: () => {
+    dispatch(Browse())
+  },
+  GotoPage: page => {
+    dispatch(GotoPage(page))
   }
 })
 export default connect(mapStateToProps, mapDispatchToProps)(BrowseSongs)

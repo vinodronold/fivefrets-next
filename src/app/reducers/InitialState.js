@@ -6,6 +6,7 @@ export default {
   },
   search: {
     searchVal: '',
+    enableYT: false,
     selected: null,
     isFetching: false,
     isError: false,
@@ -23,7 +24,8 @@ export default {
   browse: {
     isFetching: false,
     isError: false,
-    pages: 0,
+    curr_page: 0,
+    total_page: 0,
     list: {}
   },
   songs: {

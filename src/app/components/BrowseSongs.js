@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import glamorous from 'glamorous'
 import WrapperDiv from './utils/WrapperDiv'
+import Button from './html/Button'
+import Loader from './Loader'
 const Container = glamorous.div({
   padding: '1rem',
   display: 'flex',
@@ -13,17 +15,6 @@ const SongList = glamorous.div({
   flexDirection: 'column',
   textAlign: 'center'
 })
-const BrowseItems = glamorous.a(
-  {
-    margin: '.5rem',
-    cursor: 'pointer'
-  },
-  ({ theme }) => ({
-    '&:hover': {
-      color: theme.color.secondary()
-    }
-  })
-)
 const Items = glamorous.a(
   {
     padding: '.5rem 1rem',
@@ -36,38 +27,48 @@ const Items = glamorous.a(
   })
 )
 
-const PageNum = glamorous.a(
-  {
-    display: 'flex',
-    cursor: 'pointer',
-    width: '2rem',
-    height: '2rem',
-    padding: 'auto',
-    lineHeight: '1rem',
-    borderRadius: '50%',
-    fontSize: '1rem',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: '0 .25rem'
-  },
-  ({ theme }) => ({
-    backgroundColor: theme.color.secondary(),
-    '&:hover': {
-      backgroundColor: theme.color.secondary(0.75)
-    }
-  })
+const DisplayList = ({ list, curr_page, total_page }) => (
+  <SongList>{list.map(s => <Items key={s}>{s}</Items>)}</SongList>
 )
-
-export default ({ pages, list, songs }) => (
-    <WrapperDiv>
-      <Container>
-        {['0 - 1', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')].map(a => <BrowseItems key={a}>{a}</BrowseItems>)}
-      </Container>
-      <SongList>{list[1].map(s => <Items key={s}>{s}</Items>)}</SongList>
-      <Container>
-        {Array(pages - 1)
-          .fill(1)
-          .map((_, x) => <PageNum key={x}>{x + 1}</PageNum>)}
-      </Container>
-    </WrapperDiv>
-  )
+export default class BrowseSongs extends Component {
+  componentDidMount() {
+    this.props.Browse()
+  }
+  render() {
+    const { list, curr_page, total_page, GotoPage } = this.props
+    return (
+      <WrapperDiv>
+        <Container>
+          {['0 - 1', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')].map(a => (
+            <Button key={a} style={{ padding: '.5rem' }}>
+              {a}
+            </Button>
+          ))}
+        </Container>
+        {list[1] ? <DisplayList list={list[1]} curr_page={curr_page} total_page={total_page} /> : <Loader />}
+        <Container>
+          <Button
+            disabled={curr_page === 1}
+            onClick={() => {
+              GotoPage(curr_page - 1)
+            }}>
+            &#8606; Prev
+          </Button>
+          <Button
+            onClick={() => {
+              GotoPage(1)
+            }}>
+            {`${curr_page} of ${total_page}`}
+          </Button>
+          <Button
+            disabled={curr_page === total_page}
+            onClick={() => {
+              GotoPage(curr_page + 1)
+            }}>
+            Next &#8608;
+          </Button>
+        </Container>
+      </WrapperDiv>
+    )
+  }
+}

@@ -3,7 +3,8 @@ import {
   SEARCH_TEXT,
   FETCH_SEARCH_TEXT,
   FETCH_SEARCH_TEXT_ERROR,
-  FETCH_SEARCH_TEXT_SUCCESS
+  FETCH_SEARCH_TEXT_SUCCESS,
+  TOGGLE_YT_SEARCH
 } from '../constants/ActionTypes'
 import InitialState from './InitialState'
 
@@ -19,6 +20,8 @@ export default (state = InitialState.search, action) => {
       return Object.assign({}, state, { isFetching: false, isError: true, result: [] })
     case FETCH_SEARCH_TEXT_SUCCESS:
       return Object.assign({}, state, { isFetching: false, isError: false, result: action.result })
+    case TOGGLE_YT_SEARCH:
+      return Object.assign({}, state, { enableYT: !state.enableYT })
     default:
       return state
   }
