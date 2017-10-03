@@ -81,13 +81,7 @@ export default ({ isSearchOpen, isError, enableYT, searchVal, result, ToggleSear
         }}
       />
     </div>
-    <div style={{ textAlign: 'center' }}>
-      <ToggleSwitch
-        label={`${enableYT ? 'Disable' : 'Enable'} Youtube Search`}
-        checked={enableYT}
-        ToggleYTSearch={ToggleYTSearch}
-      />
-    </div>
+    {isSearchOpen ? <ToggleSwitch label={`Youtube Search`} checked={enableYT} ToggleYTSearch={ToggleYTSearch} /> : ''}
     {isSearchOpen &&
       searchVal.length > 0 &&
       (isError ? (

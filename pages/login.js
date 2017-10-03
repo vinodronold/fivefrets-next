@@ -15,5 +15,6 @@ const _Login_Page = () => (
     <div style={{ textAlign: 'center', padding: '3rem' }}>LOGIN: PAGE NOT BUILD</div>
   </Layout>
 )
+// const _Login_Page = () => [<div key="1">TEST 1</div>, <div key="2">TEST 2</div>, <div key="3">TEST 3</div>]
 
 export default withReduxSaga(_Login_Page)

@@ -24,6 +24,7 @@ export default {
   browse: {
     isFetching: false,
     isError: false,
+    start: '',
     curr_page: 0,
     total_page: 0,
     list: {}

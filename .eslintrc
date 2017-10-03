@@ -5,7 +5,7 @@
 // yarn add --dev eslint-config-react-app
 // yarn add --dev eslint-loader
 // -----------------------------------------------------------------------------------------------------------------------
-
+// yarn remove babel-eslint eslint eslint-plugin-flowtype eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-config-react-app eslint-loader
 {
   "extends": "react-app"
 }

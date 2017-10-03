@@ -14,7 +14,7 @@ export default class SongsList extends PureComponent {
     return Object.keys(songs.data).length > 0 ? (
       <div>
         {Object.keys(songs.data).map(key => (
-          <Link prefetch key={key} href={`/play?id=${key}`} as={`/play/${key}`}>
+          <Link prefetch key={key} href={`/play?id=${key}`} as={`/p/${key}`}>
             <Card id={key} title={songs.data[key].title} />
           </Link>
         ))}

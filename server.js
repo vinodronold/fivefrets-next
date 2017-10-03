@@ -12,8 +12,13 @@ app
   .then(() => {
     const server = express()
     server.use('/api', api)
-    server.get('/play/:id', (req, res) => {
+    server.get('/p/:id', (req, res) => {
+      console.log('server play')
       app.render(req, res, '/play', { id: req.params.id })
+    })
+    server.get('/b/:start', (req, res) => {
+      console.log('server browse')
+      app.render(req, res, '/browse', { start: req.params.start })
     })
     server.get('*', (req, res) => {
       return handle(req, res)

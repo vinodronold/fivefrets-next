@@ -1,7 +1,8 @@
 import { BROWSE, BROWSE_SONGS, BROWSE_SONGS_ERROR, BROWSE_SONGS_SUCCESS, GO_TO_PAGE } from '../constants/ActionTypes'
 
-export const Browse = () => ({
-  type: BROWSE
+export const Browse = start => ({
+  type: BROWSE,
+  start
 })
 export const BrowseSongs = () => ({
   type: BROWSE_SONGS

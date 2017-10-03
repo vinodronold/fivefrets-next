@@ -6,8 +6,8 @@ const mapStateToProps = state => ({
   songs: state.songs.data
 })
 const mapDispatchToProps = dispatch => ({
-  Browse: () => {
-    dispatch(Browse())
+  Browse: start => {
+    dispatch(Browse(start))
   },
   GotoPage: page => {
     dispatch(GotoPage(page))

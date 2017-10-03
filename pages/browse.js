@@ -11,10 +11,12 @@ if (typeof window !== 'undefined') {
   rehydrate(window.__NEXT_DATA__.ids)
 }
 
-const _Browse_Page = () => (
+const _Browse_Page = ({ url }) =>{
+  console.log('_Browse_Page url', url.query.start)
+  return (
   <Layout>
-    <BrowseList />
+    <BrowseList url={url.query}/>
   </Layout>
-)
+)}
 
 export default withReduxSaga(_Browse_Page)

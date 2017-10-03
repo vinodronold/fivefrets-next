@@ -4,7 +4,7 @@ import InitialState from './InitialState'
 export default (state = InitialState.browse, action) => {
   switch (action.type) {
     case BROWSE:
-      return Object.assign({}, state, { isFetching: false, isError: false, curr_page: 0, total_page: 0, list: {} })
+      return Object.assign({}, state, { isFetching: false, isError: false, start: action.start, curr_page: 0, total_page: 0, list: {} })
     case BROWSE_SONGS:
       return Object.assign({}, state, { isFetching: true })
     case BROWSE_SONGS_ERROR:
